@@ -29,4 +29,4 @@ int main()
     std::cout << "float: занимает " << sizeof(float) * 8 << " бит, мин. значение = " 
     << std::numeric_limits<float>::min() << " макс. значение = " << std::numeric_limits<float>::max() << std::endl;
 }
-v
+
