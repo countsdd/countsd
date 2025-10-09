@@ -12,12 +12,9 @@ int main() {
 
     int numcnt = 1;
     int sum = 0;
-    int min = 100000000;
-    int minnumcnt = 0;
+    int min = INT_MAX;
+    int minnumcnt = -1;
 
-    if (n <= 0) {
-        cout << "Error" << endl;
-    }
     int first;
     cout << "Enter the 1: ";
     cin >> first;
@@ -32,13 +29,12 @@ int main() {
             if (num < min) {
                 min = num;
                 minnumcnt = numcnt;
-
             }
 
         }
 
     }
-    if (sum != 0) {
+    if (minnumcnt != -1) {
         cout << "The sum of the number: " << sum << endl;
         cout << "The lowest number: " << min << endl;
         cout << "His sequence number: " << minnumcnt << endl;
@@ -52,8 +48,8 @@ int main() {
     // Задание 2
     short x;
     int sm = 0;
-    int mn = 9;
-    int mx = 0;
+    int mn = 10;
+    int mx = -1;
     int p = 0;
 
     cout << "Enter the number:";
@@ -61,7 +57,7 @@ int main() {
 
     short x1;
     x1 = abs(x);
-    if (x1 > 1000)
+    if (x1 >1000)
         cout << "Error" << endl;
     else {
         while (x1 > 0) {
