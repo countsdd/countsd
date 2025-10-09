@@ -1,9 +1,10 @@
 #include <iostream>
 
 using namespace std;
+
 int main() {
 
-    // Задание 1 
+    // Р—Р°РґР°РЅРёРµ 1 
 
     cout << "Enter N: ";
     int n;
@@ -48,7 +49,7 @@ int main() {
         cout << "The end" << endl;
     }
 
-    // Задание 2
+    // Р—Р°РґР°РЅРёРµ 2
     short x;
     int sm = 0;
     int mn = 9;
@@ -73,7 +74,7 @@ int main() {
                 mn = p;
             sm = mn + mx;
         }
-    }
     cout << "The sum min and max: " << sm << endl;
     cout << "The end" << endl;
+    }
 }
