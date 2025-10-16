@@ -2,8 +2,7 @@
 using namespace std;
 
 int main(){
-	/*
-	//Задание 1
+	//Г‡Г Г¤Г Г­ГЁГҐ 1
 	int arr[10];
 	for (int i = 0; i < 10; ++i) {
 		cout << "Enter number " << i + 1 << ": ";
@@ -26,8 +25,8 @@ int main(){
 	for (int i = 0; i < 10; ++i) {
 		cout << arr[i] << endl;
 	}
-	*/
-	//Задание 2
+
+	//Г‡Г Г¤Г Г­ГЁГҐ 2
 	const int x = 3, y = 4;
 	int matrix[x][y];
 	cout << "Enter the elements of the matrix " << x << "x" << y << ":" << endl;
@@ -38,7 +37,7 @@ int main(){
 		}
 	}
 	
-	// столбец с максимальной суммой чисел
+	// Г±ГІГ®Г«ГЎГҐГ¶ Г± Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®Г© Г±ГіГ¬Г¬Г®Г© Г·ГЁГ±ГҐГ«
 	int max_y = 0;
 	int maxsm = -1;
 	for (int j = 0; j < y; ++j) {
