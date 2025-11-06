@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <cmath>
 #include <limits>
@@ -26,7 +26,11 @@ float mainFunction(int x[3]) {
             vec.push_back(x[i]);
         }
     }
-    if (vec.size() == 2) {
+    if (vec.size() == 1) {
+        cout << "One number: " << endl;
+        return vec[0];
+    }
+    else if (vec.size() == 2) {
         return secondaryFunction(vec[0], vec[1]);
     }
     else if (vec.size() == 3) {
