@@ -1,17 +1,17 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <vector>
 #include <cmath>
 #include <limits>
 using namespace std;
 
-// Функция для двух чисел:
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРІСѓС… С‡РёСЃРµР»:
 float secondaryFunction(int n1, int n2) {
     cout << "The function of average value of two numbers" << endl;
     float avg = 0;
     avg = (n1 + n2) / 2.f;
     return avg;
 }
-// Функция для трех чисел:
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ С‚СЂРµС… С‡РёСЃРµР»:
 float secondaryFunction(int n1, int n2, int n3) {
     cout << "The function of average value of tree numbers" << endl;
     float avg = 0;
