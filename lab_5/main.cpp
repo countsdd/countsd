@@ -4,45 +4,47 @@
 #include <limits>
 using namespace std;
 
+// Функция для двух чисел:
 float secondaryFunction(int n1, int n2) {
     cout << "The function of average value of two numbers" << endl;
     float avg = 0;
     avg = (n1 + n2) / 2.f;
     return avg;
 }
+// Функция для трех чисел:
 float secondaryFunction(int n1, int n2, int n3) {
     cout << "The function of average value of tree numbers" << endl;
     float avg = 0;
     avg = (n1 + n2 + n3) / 3.f;
     return avg;
 }
-float mainFunction(int num1, int num2, int num3) {
-    vector <int>nonZeroNumbers;
-    if (num1 != 0) {
-        nonZeroNumbers.push_back(num1);
+
+float mainFunction(int x[3]) {
+    vector<int>vec;
+    for (int i = 0; i < 3; ++i) {
+        if (x[i] != 0) {
+            vec.push_back(x[i]);
+        }
     }
-    if (num2 != 0) {
-        nonZeroNumbers.push_back(num2);
+    if (vec.size() == 2) {
+        return secondaryFunction(vec[0], vec[1]);
     }
-    if (num3 != 0) {
-        nonZeroNumbers.push_back(num3);
-    }
-    if (nonZeroNumbers.size() == 2) {
-        return secondaryFunction(nonZeroNumbers[0], nonZeroNumbers[1]);
-    }
-    else if (nonZeroNumbers.size() == 3) {
-        return secondaryFunction(nonZeroNumbers[0], nonZeroNumbers[1], nonZeroNumbers[2]);
+    else if (vec.size() == 3) {
+        return secondaryFunction(vec[0], vec[1], vec[2]);
     }
     else {
-        cout << "Incorrect number input" << endl;
+        cout << "Error" << endl;
         return 0;
     }
 }
+
 void task1() {
-    int a, b, c;
-    cout << "Enter tree numbers: ";
-    cin >> a >> b >> c;
-    cout << mainFunction(a, b, c) << endl;
+    int x[3];
+    for (int i = 0; i != 3; i++) {
+        cout << "Enter number" << i + 1 <<": ";
+        cin >> x[i];
+    }
+    cout << mainFunction(x) << endl;
 }
 
 void task2(int x) {
