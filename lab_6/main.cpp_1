@@ -1,0 +1,151 @@
+#include <iostream>
+
+int* findzero(int** matrix, int row, int col, int* newCol) {
+    // Find columns with zeros
+    int* zeroCol = (int*)std::malloc(col * sizeof(int));
+    int zeroCount = 0;
+
+    for (int j = 0; j < col; j++) {
+        for (int i = 0; i < row; i++) {
+            if (matrix[i][j] == 0) {
+                zeroCol[zeroCount] = j;
+                zeroCount++;
+                break;
+            }
+        }
+    }
+
+    *newCol = col - zeroCount;
+    if (zeroCount > 0) {
+        zeroCol = (int*)std::realloc(zeroCol, zeroCount * sizeof(int));
+    }
+    return zeroCol;
+}
+
+int main() {
+    int** matrix = (int**)std::malloc(2 * sizeof(int*));
+    for (int i = 0; i < 2; i++) {
+        matrix[i] = (int*)std::malloc(2 * sizeof(int));
+    }
+
+    //заполняем
+    int A, B, C, D;
+
+    do {
+        std::cout << "enter A: ";
+        std::cin >> A;
+        if (A < 0) std::cout << "error! A must be >= 0\n";
+    } while (A < 0);
+
+    do {
+        std::cout << "enter B: ";
+        std::cin >> B;
+        if (B < 0) std::cout << "error! B must be >= 0\n";
+    } while (B < 0);
+
+    std::cout << "enter C: ";
+    std::cin >> C;
+    std::cout << "enter D: ";
+    std::cin >> D;
+
+    matrix[0][0] = A;
+    matrix[0][1] = B;
+    matrix[1][0] = C;
+    matrix[1][1] = D;
+
+    int nr = 2 + A;
+    int nc = 2 + B;
+
+    matrix = (int**)std::realloc(matrix, nr * sizeof(int*));
+    for (int i = 0; i < nr; i++) {
+        if (i < 2) {
+            matrix[i] = (int*)std::realloc(matrix[i], nc * sizeof(int));
+        }
+        else {
+            matrix[i] = (int*)std::malloc(nc * sizeof(int));
+        }
+    }
+
+    for (int i = 0; i < nr; i++) {
+        for (int j = 0; j < nc; j++) {
+            if (i < 2 && j < 2) continue;
+            matrix[i][j] = (i - 1) * C + (j-1) * D;
+        }
+    }
+
+    std::cout << "matrix:\n";
+    for (int i = 0; i < nr; i++) {
+        for (int j = 0; j < nc; j++) {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    int newcol;
+    int* zcol = findzero(matrix, nr, nc, &newcol);
+    int zcnt = nc-newcol;
+
+    // убираем колонки с 0
+    if (zcnt > 0) {
+        for (int i = 0; i<nr; i++){
+            int newj = 0;
+            for (int j = 0; j<nc; j++){
+                bool hzero = false;
+                for (int k = 0; k < zcnt; k++) {
+                    if (j == zcol[k]) {
+                        hzero = true;
+                        break;
+                    }
+                }
+                if (!hzero) {
+                    matrix[i][newj] = matrix[i][j];
+                    newj++;
+                }
+            }
+        }
+        //обрезаем
+        for (int i = 0; i < nr; i++) {
+            matrix[i] = (int*)std::realloc(matrix[i], newcol*sizeof(int));
+        }
+        nc = newcol;
+    }
+
+    std::cout << "result:\n";
+    for (int i = 0; i < nr; i++) {
+        for (int j = 0; j < nc; j++) {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // освобождаем память
+    std::free(zcol);
+    for (int i = 0; i < nr; i++) {
+        std::free(matrix[i]);
+    }
+    std::free(matrix);
+
+    // Пункт 2
+
+    float a, b;
+    std::cout << "enter a and b: ";
+    std::cin >> a >> b;
+
+    float* pA = new float(a);
+    float* pB = new float(b);
+
+    *pA *= 3;
+
+    std::cout << "after a*3: a=" << *pA << " b=" << *pB << std::endl;
+
+    float tmp = *pA;
+    *pA = *pB;
+    *pB = tmp;
+
+    std::cout << "after swap: a=" << *pA << " b=" << *pB << std::endl;
+
+    delete pA;
+    delete pB;
+
+    return 0;
+}
