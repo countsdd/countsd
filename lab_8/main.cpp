@@ -16,7 +16,7 @@ struct EnergyDrink {
     EnergyDrink* next;     
 };
 
-// Ôóíêöèÿ ñîçäàíèÿ íîâîãî íàïèòêà
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ°
 EnergyDrink* MAKE(int id, str name, str flavor, double rating, int similarId, double price) {
     
     EnergyDrink* p = new EnergyDrink;
@@ -32,7 +32,7 @@ EnergyDrink* MAKE(int id, str name, str flavor, double rating, int similarId, do
     return p;  
 }
 
-// Ôóíêöèÿ äîáàâëåíèÿ íàïèòêà â ÊÎÍÅÖ ñïèñêà
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ° Ð² ÐšÐžÐÐ•Ð¦ ÑÐ¿Ð¸ÑÐºÐ°
 void ADD(EnergyDrink* head, int id, str name, str flavor, double rating, int similarId, double price) {
     
     EnergyDrink* p = MAKE(id, name, flavor, rating, similarId, price);
@@ -41,62 +41,62 @@ void ADD(EnergyDrink* head, int id, str name, str flavor, double rating, int sim
         current = current->next;
     }
     current->next = p;
-    cout << "Íàïèòîê '" << name << "' äîáàâëåí ñ ID: " << id << endl;
+    cout << "ÐÐ°Ð¿Ð¸Ñ‚Ð¾Ðº '" << name << "' Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½ Ñ ID: " << id << endl;
 }
 
-// Ôóíêöèÿ âûâîäà âñåõ íàïèòêîâ
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð²ÑÐµÑ… Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ¾Ð²
 void PRINT(EnergyDrink* head) {
     EnergyDrink* p = head->next;
     if (p == nullptr) {
-        cout << "Êàòàëîã ïóñò!" << endl;
+        cout << "ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³ Ð¿ÑƒÑÑ‚!" << endl;
         return;
     }
-    cout << "=== ÊÀÒÀËÎÃ ÝÍÅÐÃÅÒÈ×ÅÑÊÈÕ ÍÀÏÈÒÊÎÂ ===" << endl;
+    cout << "=== ÐšÐÐ¢ÐÐ›ÐžÐ“ Ð­ÐÐ•Ð Ð“Ð•Ð¢Ð˜Ð§Ð•Ð¡ÐšÐ˜Ð¥ ÐÐÐŸÐ˜Ð¢ÐšÐžÐ’ ===" << endl;
     while (p != nullptr) {
-        cout << "Íàïèòîê:" << endl;
+        cout << "ÐÐ°Ð¿Ð¸Ñ‚Ð¾Ðº:" << endl;
         cout << "ID - " << p->id << endl;
-        cout << "Íàçâàíèå - " << p->name << endl;
-        cout << "Âêóñ - " << p->flavor << endl;
-        cout << "Îöåíêà - " << p->rating << "/5.0" << endl;
+        cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ - " << p->name << endl;
+        cout << "Ð’ÐºÑƒÑ - " << p->flavor << endl;
+        cout << "ÐžÑ†ÐµÐ½ÐºÐ° - " << p->rating << "/5.0" << endl;
         if (p->similarId == -1) {
-            cout << "Ïîõîæèé íàïèòîê (ID) - íåò" << endl;
+            cout << "ÐŸÐ¾Ñ…Ð¾Ð¶Ð¸Ð¹ Ð½Ð°Ð¿Ð¸Ñ‚Ð¾Ðº (ID) - Ð½ÐµÑ‚" << endl;
         }
         else {
-            cout << "Ïîõîæèé íàïèòîê (ID) - " << p->similarId << endl;
+            cout << "ÐŸÐ¾Ñ…Ð¾Ð¶Ð¸Ð¹ Ð½Ð°Ð¿Ð¸Ñ‚Ð¾Ðº (ID) - " << p->similarId << endl;
         }
-        cout << "Öåíà - " << p->price << " ðóá." << endl;
+        cout << "Ð¦ÐµÐ½Ð° - " << p->price << " Ñ€ÑƒÐ±." << endl;
         cout << "------------------------" << endl;
         p = p->next;
     }
 }
 
-// Ôóíêöèÿ âûâîäà êîíêðåòíîãî íàïèòêà ïî åãî ID
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° ÐºÐ¾Ð½ÐºÑ€ÐµÑ‚Ð½Ð¾Ð³Ð¾ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ° Ð¿Ð¾ ÐµÐ³Ð¾ ID
 void PRINT_ELEMENT(EnergyDrink* head, int id) {
     EnergyDrink* p = head->next;
     while (p != nullptr) {
         if (p->id == id) {
-            cout << "=== ÄÅÒÀËÜÍÀß ÈÍÔÎÐÌÀÖÈß ===" << endl;
+            cout << "=== Ð”Ð•Ð¢ÐÐ›Ð¬ÐÐÐ¯ Ð˜ÐÐ¤ÐžÐ ÐœÐÐ¦Ð˜Ð¯ ===" << endl;
             cout << "ID - " << p->id << endl;
-            cout << "Íàçâàíèå - " << p->name << endl;
-            cout << "Âêóñ - " << p->flavor << endl;
-            cout << "Îöåíêà - " << p->rating << "/5.0" << endl;
+            cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ - " << p->name << endl;
+            cout << "Ð’ÐºÑƒÑ - " << p->flavor << endl;
+            cout << "ÐžÑ†ÐµÐ½ÐºÐ° - " << p->rating << "/5.0" << endl;
 
             if (p->similarId == -1) {
-                cout << "Ïîõîæèé íàïèòîê (ID) - íåò" << endl;
+                cout << "ÐŸÐ¾Ñ…Ð¾Ð¶Ð¸Ð¹ Ð½Ð°Ð¿Ð¸Ñ‚Ð¾Ðº (ID) - Ð½ÐµÑ‚" << endl;
             }
             else {
-                cout << "Ïîõîæèé íàïèòîê (ID) - " << p->similarId << endl;
+                cout << "ÐŸÐ¾Ñ…Ð¾Ð¶Ð¸Ð¹ Ð½Ð°Ð¿Ð¸Ñ‚Ð¾Ðº (ID) - " << p->similarId << endl;
             }
 
-            cout << "Öåíà - " << p->price << " ðóá." << endl;
+            cout << "Ð¦ÐµÐ½Ð° - " << p->price << " Ñ€ÑƒÐ±." << endl;
             return;
         }
         p = p->next; 
     }
-    cout << "Íàïèòîê ñ ID " << id << " íå íàéäåí!" << endl;
+    cout << "ÐÐ°Ð¿Ð¸Ñ‚Ð¾Ðº Ñ ID " << id << " Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½!" << endl;
 }
 
-// Ôóíêöèÿ ñîçäàíèÿ íîâîãî íàïèòêà (èíòåðàêòèâíûé ââîä)
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ° (Ð¸Ð½Ñ‚ÐµÑ€Ð°ÐºÑ‚Ð¸Ð²Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´)
 void CREATE_NEW(EnergyDrink* head) {
     
     EnergyDrink* p = head->next;
@@ -112,32 +112,32 @@ void CREATE_NEW(EnergyDrink* head) {
     double rating, price;
     int similarId;
 
-    cout << "=== ÑÎÇÄÀÍÈÅ ÍÎÂÎÃÎ ÍÀÏÈÒÊÀ ===" << endl;
-    cout << "Àâòîìàòè÷åñêè ïðèñâîåí ID: " << newId << endl;
+    cout << "=== Ð¡ÐžÐ—Ð”ÐÐÐ˜Ð• ÐÐžÐ’ÐžÐ“Ðž ÐÐÐŸÐ˜Ð¢ÐšÐ ===" << endl;
+    cout << "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¿Ñ€Ð¸ÑÐ²Ð¾ÐµÐ½ ID: " << newId << endl;
 
-    cout << "Ââåäèòå íàçâàíèå: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ: ";
     cin >> name;  
 
-    cout << "Ââåäèòå âêóñ: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²ÐºÑƒÑ: ";
     cin >> flavor;
 
-    cout << "Ââåäèòå îöåíêó (0.0-5.0): ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ñ†ÐµÐ½ÐºÑƒ (0.0-5.0): ";
     cin >> rating;
 
-    cout << "Ââåäèòå ID ïîõîæåãî íàïèòêà (-1 åñëè íåò): ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID Ð¿Ð¾Ñ…Ð¾Ð¶ÐµÐ³Ð¾ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ° (-1 ÐµÑÐ»Ð¸ Ð½ÐµÑ‚): ";
     cin >> similarId;
 
-    cout << "Ââåäèòå öåíó: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ½Ñƒ: ";
     cin >> price;
 
     ADD(head, newId, name, flavor, rating, similarId, price);
 }
 
-// Ôóíêöèÿ 1: Ñîðòèðîâêà êàòàëîãà ïî ñòîèìîñòè (ïî âîçðàñòàíèþ)
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ 1: Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ð¿Ð¾ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚Ð¸ (Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ)
 void SORT_BY_PRICE(EnergyDrink* head) {
     
     if (head->next == nullptr || head->next->next == nullptr) {
-        cout << "Íåäîñòàòî÷íî ýëåìåíòîâ äëÿ ñîðòèðîâêè!" << endl;
+        cout << "ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´Ð»Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸!" << endl;
         return;
     }
     bool swapped;
@@ -159,10 +159,10 @@ void SORT_BY_PRICE(EnergyDrink* head) {
         }
     } while (swapped);  
 
-    cout << "Êàòàëîã îòñîðòèðîâàí ïî âîçðàñòàíèþ öåíû!" << endl;
+    cout << "ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³ Ð¾Ñ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ Ñ†ÐµÐ½Ñ‹!" << endl;
 }
 
-// Ôóíêöèÿ 2: Âûâîä óíèêàëüíûõ âêóñîâ (òåõ, êîòîðûå íèêîìó íå ïîõîæè)
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ 2: Ð’Ñ‹Ð²Ð¾Ð´ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ñ… Ð²ÐºÑƒÑÐ¾Ð² (Ñ‚ÐµÑ…, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð½Ð¸ÐºÐ¾Ð¼Ñƒ Ð½Ðµ Ð¿Ð¾Ñ…Ð¾Ð¶Ð¸)
 void PRINT_UNIQUE_FLAVORS(EnergyDrink* head) {
     vector<str> uniqueFlavors;
     vector<str> similarFlavors;
@@ -203,9 +203,9 @@ void PRINT_UNIQUE_FLAVORS(EnergyDrink* head) {
         }
         p = p->next;
     }
-    cout << "=== ÓÍÈÊÀËÜÍÛÅ ÂÊÓÑÛ (ïîõîæèõ íåò) ===" << endl;
+    cout << "=== Ð£ÐÐ˜ÐšÐÐ›Ð¬ÐÐ«Ð• Ð’ÐšÐ£Ð¡Ð« (Ð¿Ð¾Ñ…Ð¾Ð¶Ð¸Ñ… Ð½ÐµÑ‚) ===" << endl;
     if (uniqueFlavors.empty()) {
-        cout << "Óíèêàëüíûõ âêóñîâ íå íàéäåíî!" << endl;
+        cout << "Ð£Ð½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ñ… Ð²ÐºÑƒÑÐ¾Ð² Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾!" << endl;
     }
     else {
         for (size_t i = 0; i < uniqueFlavors.size(); i++) {
@@ -214,7 +214,7 @@ void PRINT_UNIQUE_FLAVORS(EnergyDrink* head) {
     }
 }
 
-// Ôóíêöèÿ 3: Âûâîä íàïèòêîâ ïî âêóñàì ñ óêàçàíèåì ïåðåõîäîâ ê ïîõîæèì
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ 3: Ð’Ñ‹Ð²Ð¾Ð´ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ¾Ð² Ð¿Ð¾ Ð²ÐºÑƒÑÐ°Ð¼ Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¸ÐµÐ¼ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¾Ð² Ðº Ð¿Ð¾Ñ…Ð¾Ð¶Ð¸Ð¼
 void PRINT_BY_FLAVORS(EnergyDrink* head) {
     
     vector<EnergyDrink*> allDrinks;
@@ -237,10 +237,10 @@ void PRINT_BY_FLAVORS(EnergyDrink* head) {
             flavors.push_back(drink->flavor);
         }
     }
-    cout << "=== ÂÛÂÎÄ ÏÎ ÂÊÓÑÀÌ Ñ ÏÅÐÅÕÎÄÀÌÈ ===" << endl;
+    cout << "=== Ð’Ð«Ð’ÐžÐ” ÐŸÐž Ð’ÐšÐ£Ð¡ÐÐœ Ð¡ ÐŸÐ•Ð Ð•Ð¥ÐžÐ”ÐÐœÐ˜ ===" << endl;
     for (size_t k = 0; k < flavors.size(); k++) {
         str flavor = flavors[k];
-        cout << "--- Âêóñ: " << flavor << " ---" << endl;
+        cout << "--- Ð’ÐºÑƒÑ: " << flavor << " ---" << endl;
         vector<EnergyDrink*> flavorDrinks;
         for (size_t i = 0; i < allDrinks.size(); i++) {
             EnergyDrink* drink = allDrinks[i];
@@ -267,7 +267,7 @@ void PRINT_BY_FLAVORS(EnergyDrink* head) {
         cout << endl;  
     }
 }
-// Ôóíêöèÿ î÷èñòêè ïàìÿòè (óäàëåíèå âñåõ ýëåìåíòîâ ñïèñêà)
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¾Ñ‡Ð¸ÑÑ‚ÐºÐ¸ Ð¿Ð°Ð¼ÑÑ‚Ð¸ (ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð²ÑÐµÑ… ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² ÑÐ¿Ð¸ÑÐºÐ°)
 void CLEAR(EnergyDrink* head) {
     EnergyDrink* p = head->next;
     while (p != nullptr) {
@@ -282,31 +282,31 @@ int main() {
     EnergyDrink head;
     head.next = nullptr;
 
-    cout << "Çàïîëíÿåì êàòàëîã íà÷àëüíûìè äàííûìè..." << endl;
-    ADD(&head, 1, "Red Bull", "Êëàññè÷åñêèé", 4.2, 2, 150.0);
-    ADD(&head, 2, "Burn", "Êëàññè÷åñêèé", 3.8, 1, 120.0);
-    ADD(&head, 3, "Adrenaline Rush", "Öèòðóñîâûé", 4.0, -1, 140.0);
-    ADD(&head, 4, "Monster", "ßãîäíûé ìèêñ", 4.5, -1, 180.0);
-    ADD(&head, 5, "Gorilla", "Òðîïè÷åñêèé", 3.9, -1, 130.0);
-    ADD(&head, 6, "Flash", "Ëèìîííûé", 4.1, -1, 110.0);
-    ADD(&head, 7, "Bullet", "Êîëà", 3.7, -1, 125.0);
+    cout << "Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ð¼Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸..." << endl;
+    ADD(&head, 1, "Red Bull", "ÐšÐ»Ð°ÑÑÐ¸Ñ‡ÐµÑÐºÐ¸Ð¹", 4.2, 2, 150.0);
+    ADD(&head, 2, "Burn", "ÐšÐ»Ð°ÑÑÐ¸Ñ‡ÐµÑÐºÐ¸Ð¹", 3.8, 1, 120.0);
+    ADD(&head, 3, "Adrenaline Rush", "Ð¦Ð¸Ñ‚Ñ€ÑƒÑÐ¾Ð²Ñ‹Ð¹", 4.0, -1, 140.0);
+    ADD(&head, 4, "Monster", "Ð¯Ð³Ð¾Ð´Ð½Ñ‹Ð¹ Ð¼Ð¸ÐºÑ", 4.5, -1, 180.0);
+    ADD(&head, 5, "Gorilla", "Ð¢Ñ€Ð¾Ð¿Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹", 3.9, -1, 130.0);
+    ADD(&head, 6, "Flash", "Ð›Ð¸Ð¼Ð¾Ð½Ð½Ñ‹Ð¹", 4.1, -1, 110.0);
+    ADD(&head, 7, "Bullet", "ÐšÐ¾Ð»Ð°", 3.7, -1, 125.0);
 
     int choice;
     do {
-        cout << "=== ÌÅÍÞ ÊÀÒÀËÎÃÀ ÝÍÅÐÃÅÒÈ×ÅÑÊÈÕ ÍÀÏÈÒÊÎÂ ===" << endl;
-        cout << "1. Ïðîñìîòð âñåõ íàïèòêîâ" << endl;
-        cout << "2. Ïðîñìîòð êîíêðåòíîãî íàïèòêà (ïî ID)" << endl;
-        cout << "3. Ñîçäàíèå íîâîãî íàïèòêà" << endl;
-        cout << "4. Ñîðòèðîâêà êàòàëîãà ïî ñòîèìîñòè" << endl;
-        cout << "5. Âûâîä óíèêàëüíûõ âêóñîâ (ïîõîæèõ íåò)" << endl;
-        cout << "6. Âûâîä ïî âêóñàì ñ ïåðåõîäàìè" << endl;
-        cout << "0. Âûõîä èç ïðîãðàììû" << endl;
-        cout << "Âûáåðèòå äåéñòâèå: ";
+        cout << "=== ÐœÐ•ÐÐ® ÐšÐÐ¢ÐÐ›ÐžÐ“Ð Ð­ÐÐ•Ð Ð“Ð•Ð¢Ð˜Ð§Ð•Ð¡ÐšÐ˜Ð¥ ÐÐÐŸÐ˜Ð¢ÐšÐžÐ’ ===" << endl;
+        cout << "1. ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ Ð²ÑÐµÑ… Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ¾Ð²" << endl;
+        cout << "2. ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ ÐºÐ¾Ð½ÐºÑ€ÐµÑ‚Ð½Ð¾Ð³Ð¾ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ° (Ð¿Ð¾ ID)" << endl;
+        cout << "3. Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ°" << endl;
+        cout << "4. Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ð¿Ð¾ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚Ð¸" << endl;
+        cout << "5. Ð’Ñ‹Ð²Ð¾Ð´ ÑƒÐ½Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ñ… Ð²ÐºÑƒÑÐ¾Ð² (Ð¿Ð¾Ñ…Ð¾Ð¶Ð¸Ñ… Ð½ÐµÑ‚)" << endl;
+        cout << "6. Ð’Ñ‹Ð²Ð¾Ð´ Ð¿Ð¾ Ð²ÐºÑƒÑÐ°Ð¼ Ñ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð°Ð¼Ð¸" << endl;
+        cout << "0. Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹" << endl;
+        cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ: ";
         cin >> choice;
 
         switch (choice) {
         case 0:
-            cout << "Âûõîä èç ïðîãðàììû..." << endl;
+            cout << "Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹..." << endl;
             break;
 
         case 1:
@@ -315,7 +315,7 @@ int main() {
 
         case 2: {
             int id;
-            cout << "Ââåäèòå ID íàïèòêà äëÿ ïðîñìîòðà: ";
+            cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ° Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€Ð°: ";
             cin >> id;
             PRINT_ELEMENT(&head, id);  
             break;
@@ -339,12 +339,12 @@ int main() {
             break;
 
         default:
-            cout << "Íåâåðíûé âûáîð! Ïîæàëóéñòà, âûáåðèòå îò 0 äî 6." << endl;
+            cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ñ‹Ð±Ð¾Ñ€! ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¾Ñ‚ 0 Ð´Ð¾ 6." << endl;
         }
     } while (choice != 0); 
 
     CLEAR(&head);
-    cout << "Ïàìÿòü î÷èùåíà. Ïðîãðàììà çàâåðøåíà!" << endl;
+    cout << "ÐŸÐ°Ð¼ÑÑ‚ÑŒ Ð¾Ñ‡Ð¸Ñ‰ÐµÐ½Ð°. ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð°!" << endl;
 
     return 0; 
 }
