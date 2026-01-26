@@ -1,24 +1,24 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
-using str = string;  
+using str = string;
 
 struct EnergyDrink {
-    int id;                 
-    str name;              
-    str flavor;            
-    double rating;         
-    int similarId;         
-    double price;          
-    EnergyDrink* next;     
+    int id;
+    str name;
+    str flavor;
+    double rating;
+    int similarId;
+    double price;
+    EnergyDrink* next;
 };
 
 // Функция создания нового напитка
 EnergyDrink* MAKE(int id, str name, str flavor, double rating, int similarId, double price) {
-    
+
     EnergyDrink* p = new EnergyDrink;
 
     p->id = id;
@@ -29,12 +29,12 @@ EnergyDrink* MAKE(int id, str name, str flavor, double rating, int similarId, do
     p->price = price;
     p->next = nullptr;
 
-    return p;  
+    return p;
 }
 
 // Функция добавления напитка в КОНЕЦ списка
 void ADD(EnergyDrink* head, int id, str name, str flavor, double rating, int similarId, double price) {
-    
+
     EnergyDrink* p = MAKE(id, name, flavor, rating, similarId, price);
     EnergyDrink* current = head;
     while (current->next != nullptr) {
@@ -91,14 +91,14 @@ void PRINT_ELEMENT(EnergyDrink* head, int id) {
             cout << "Цена - " << p->price << " руб." << endl;
             return;
         }
-        p = p->next; 
+        p = p->next;
     }
     cout << "Напиток с ID " << id << " не найден!" << endl;
 }
 
 // Функция создания нового напитка (интерактивный ввод)
 void CREATE_NEW(EnergyDrink* head) {
-    
+
     EnergyDrink* p = head->next;
     int maxId = 0;
     while (p != nullptr) {
@@ -116,7 +116,7 @@ void CREATE_NEW(EnergyDrink* head) {
     cout << "Автоматически присвоен ID: " << newId << endl;
 
     cout << "Введите название: ";
-    cin >> name;  
+    cin >> name;
 
     cout << "Введите вкус: ";
     cin >> flavor;
@@ -135,7 +135,7 @@ void CREATE_NEW(EnergyDrink* head) {
 
 // Функция 1: Сортировка каталога по стоимости (по возрастанию)
 void SORT_BY_PRICE(EnergyDrink* head) {
-    
+
     if (head->next == nullptr || head->next->next == nullptr) {
         cout << "Недостаточно элементов для сортировки!" << endl;
         return;
@@ -143,21 +143,21 @@ void SORT_BY_PRICE(EnergyDrink* head) {
     bool swapped;
     do {
         swapped = false;
-        EnergyDrink* prev = head;          
-        EnergyDrink* curr = head->next;   
-        EnergyDrink* next = curr->next;    
+        EnergyDrink* prev = head;
+        EnergyDrink* curr = head->next;
+        EnergyDrink* next = curr->next;
         while (next != nullptr) {
             if (curr->price > next->price) {
                 curr->next = next->next;
                 next->next = curr;
                 prev->next = next;
-                swapped = true; 
+                swapped = true;
             }
             prev = curr;
             curr = next;
             next = next->next;
         }
-    } while (swapped);  
+    } while (swapped);
 
     cout << "Каталог отсортирован по возрастанию цены!" << endl;
 }
@@ -216,7 +216,7 @@ void PRINT_UNIQUE_FLAVORS(EnergyDrink* head) {
 
 // Функция 3: Вывод напитков по вкусам с указанием переходов к похожим
 void PRINT_BY_FLAVORS(EnergyDrink* head) {
-    
+
     vector<EnergyDrink*> allDrinks;
     EnergyDrink* p = head->next;
     while (p != nullptr) {
@@ -259,21 +259,21 @@ void PRINT_BY_FLAVORS(EnergyDrink* head) {
                     }
                 }
             }
-            cout << "]"; 
+            cout << "]";
             if (i < flavorDrinks.size() - 1) {
                 cout << " | ";
             }
         }
-        cout << endl;  
+        cout << endl;
     }
 }
 // Функция очистки памяти (удаление всех элементов списка)
 void CLEAR(EnergyDrink* head) {
     EnergyDrink* p = head->next;
     while (p != nullptr) {
-        EnergyDrink* temp = p;  
-        p = p->next;           
-        delete temp;           
+        EnergyDrink* temp = p;
+        p = p->next;
+        delete temp;
     }
     head->next = nullptr;
 }
@@ -310,41 +310,41 @@ int main() {
             break;
 
         case 1:
-            PRINT(&head);  
+            PRINT(&head);
             break;
 
         case 2: {
             int id;
             cout << "Введите ID напитка для просмотра: ";
             cin >> id;
-            PRINT_ELEMENT(&head, id);  
+            PRINT_ELEMENT(&head, id);
             break;
         }
 
         case 3:
-            CREATE_NEW(&head);  
+            CREATE_NEW(&head);
             break;
 
         case 4:
-            SORT_BY_PRICE(&head);  
-            PRINT(&head);          
+            SORT_BY_PRICE(&head);
+            PRINT(&head);
             break;
 
         case 5:
-            PRINT_UNIQUE_FLAVORS(&head);  
+            PRINT_UNIQUE_FLAVORS(&head);
             break;
 
         case 6:
-            PRINT_BY_FLAVORS(&head); 
+            PRINT_BY_FLAVORS(&head);
             break;
 
         default:
             cout << "Неверный выбор! Пожалуйста, выберите от 0 до 6." << endl;
         }
-    } while (choice != 0); 
+    } while (choice != 0);
 
     CLEAR(&head);
     cout << "Память очищена. Программа завершена!" << endl;
 
-    return 0; 
+    return 0;
 }
