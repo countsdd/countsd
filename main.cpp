@@ -1,110 +1,383 @@
 #include <iostream>
-#include <cmath>
-#include <bitset>
-/*
-0.Для пункта 1 число А (short) вводиться с клавиатуры, номер бита i тоже. 
-Проверить правильность ввода i и определить по заданию. Все числа выводить в виде “5 = 00000101”.
-(будем рассматривать только первые 8 бит). Для первого сравнения в пункте 1, вытащить значение i бита в отдельную переменную.
-Для пункта 2 сгруппировать кейсы если это возможно.
+#include <vector>
+// РџРѕР»СЏ: РґРµРЅСЊ, РјРµСЃСЏС†, РіРѕРґ, С‡Р°СЃС‹, РјРёРЅСѓС‚С‹, РґРµРЅСЊ РЅРµРґРµР»Рё.
+// РњРµС‚РѕРґС‹: РіРµС‚С‚РµСЂС‹ РЅР° РІСЃРµ, СЃРµС‚С‚РµСЂ РЅР° РґРµРЅСЊ РЅРµРґРµР»Рё, РІС‹РІРѕРґ РІСЃРµР№ РёРЅС„РѕСЂРјР°С†РёРё, РґРѕР±Р°РІР»РµРЅРёРµ X РјРёРЅСѓС‚.
 
-1.Если i бит А не равен 0 – изменить его на противоположный, вывести результат.
-Иначе – ввести два целых числа, определить максимальное по модулю, без использования функций, 
-и вывести его на экран два раза без пробела.
+using str = std::string;
 
-2.Ввести с клавиатуры N(1) и M(3) – цифры(не 0), объединить их 2-х значное число(13), 
-с помощью switch вывести “народные” названия бочонков лото если они дубли(ХХ). В других случаях сообщить что “номер не дубль”.
+class Clock {
+private:
+    int day_;
+    int month_;
+    int hours_;
+    int mins_;
+    str day_of_week_;
+protected:
+    int year_;
+public:
+    Clock() {
+        day_ = 31;
+        month_ = 12;
+        year_ = 9999;
+        hours_ = 23;
+        mins_ = 59;
+        day_of_week_ = "Р’РѕСЃРєСЂРµСЃРµРЅСЊРµ";
+        std::cerr << "РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" << std::endl;
+    }
+    Clock(int day, int month, int year, int hours, int mins, str day_of_week) : day_(day), month_(month),
+        year_(year), hours_(hours), mins_(mins), day_of_week_(day_of_week) {
+        std::cerr << "РїР°СЂР°РјРµС‚СЂРёР·РѕРІР°РЅРЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ" << std::endl;
+    }
+    Clock(const Clock &p) : day_(p.day_), month_(p.month_),
+        year_(p.year_), hours_(p.hours_), mins_(p.mins_), day_of_week_(p.day_of_week_) {
+        std::cerr << "РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ" << std::endl;
+    }
+    ~Clock() {
+        std::cerr << "РґРµСЃС‚СЂСѓРєС‚РѕСЂ" << std::endl;
+    }
+    void print_info() {
+        std::cout << "=============" << std::endl;
+        std::cout << "Р”РµРЅСЊ: " << day_ << std::endl; 
+        std::cout << "РњРµСЃСЏС†: " << month_ << std::endl;
+        std::cout << "Р“РѕРґ: " << year_ << std::endl;
+        std::cout << "Р§Р°СЃС‹: " << hours_ << std::endl;
+        std::cout << "РњРёРЅСѓС‚С‹: " << mins_ << std::endl;
+        std::cout << "Р”РµРЅСЊ РЅРµРґРµР»Рё: " << day_of_week_ << std::endl; 
+        std::cout << "=============" << std::endl;
+    }
+    void set_day_of_week(int day_of_week1) {
+        switch (day_of_week1) {
+        case 1:
+            day_of_week_ = "РџРѕРЅРµРґРµР»СЊРЅРёРє";
+            break;
+        case 2:
+            day_of_week_ = "Р’С‚РѕСЂРЅРёРє"; 
+            break;
+        case 3:
+            day_of_week_ = "РЎСЂРµРґР°";
+            break;
+        case 4:
+            day_of_week_ = "Р§РµС‚РІРµСЂРі";
+            break;
+        case 5:
+            day_of_week_ = "РџСЏС‚РЅРёС†Р°"; 
+            break;
+        case 6:
+            day_of_week_ = "РЎСѓР±Р±РѕС‚Р°";
+            break;
+        case 7:
+            day_of_week_ = "Р’РѕСЃРєСЂРµСЃРµРЅСЊРµ";
+            break;
+        default:
+            std::cout << "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ" << std::endl;
+            break;
+        }
+  }
+  void set_year(int num){
+    year_ = num;
+  }
+  void set_month(int num){
+    if((num  < 1) || (num >12)){
+      str error = "РњРµСЃСЏС† РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ < 13 Рё > 1 ";
+      throw error;
+    }
+    month_ = num;
+  }
 
-*/
-using namespace std;
+  void set_day(int num){
+    std::vector<int> days31 = {1,3,5,7,8,10,12};
+    std::vector<int> days30 = {4,6,9,11};
+    if (std::find(days31.begin(), days31.end(), month_) != days31.end()){
+      if ((num < 1) || (num > 31)){
+        str error = "Р”РµРЅСЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ < 31 Рё > 1"; 
+        throw error;
+      }
+    }
+    else if (std::find(days30.begin(), days30.end(), month_) != days30.end()){
+      if ((num < 1) || (num > 30)){
+        str error = "Р”РµРЅСЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ < 30 Рё > 1"; 
+        throw error;
+      }
+    }
+    else {
+      if ((num < 1) || (num > 28)){
+        str error = "Р”РµРЅСЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ < 28 Рё > 1"; 
+        throw error;
+      }
+    }
+    day_ = num;
+  }
+  void set_hours(int num){
+    if((num  < 0) || (num >23)){
+      str error = "Р§Р°СЃС‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ < 24 Рё >= 0 "; 
+      throw error;
+    }
+    hours_ = num;
+  }
+  void set_minutes(int num){
+    if((num  < 0) || (num >59)){
+      str error = "РњРёРЅСѓС‚С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ < 60 Рё >= 0 "; 
+      throw error;
+    }
+    mins_ = num;
+  }
 
-int main()
+  
+    void add_min(int minutes) {
 
-{
-	setlocale(LC_ALL, "Russian");
 
-	//пункт 0
-	short A;
-	cout << "A:";
-	cin >> A;
+        if (minutes < 1) {
+            str error = "РњРёРЅСѓС‚С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ > 0"; 
+            throw error;
+        }
+        mins_ += minutes;
+        if (mins_ > 59) {
+            hours_ += (mins_ / 60);
+            mins_ = mins_ % 60;
+        }
+        if (hours_ > 23) {
+            day_ += hours_ / 24;
+            hours_ = hours_ % 24;
+        }
+        switch (month_) {
+        case 1:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        case 2:
+            if (day_ > 28) {
+                month_ += day_ / 28;
+                day_ = day_ % 28;
+            }
+            break;
+        case 3:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        case 4:
+            if (day_ > 30) {
+                month_ += day_ / 30;
+                day_ = day_ % 30;
+            }
+            break;
+        case 5:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        case 6:
+            if (day_ > 30) {
+                month_ += day_ / 30;
+                day_ = day_ % 30;
+            }
+            break;
+        case 7:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        case 8:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        case 9:
+            if (day_ > 30) {
+                month_ += day_ / 30;
+                day_ = day_ % 30;
+            }
+            break;
+        case 10:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        case 11:
+            if (day_ > 30) {
+                month_ += day_ / 30;
+                day_ = day_ % 30;
+            }
+            break;
+        case 12:
+            if (day_ > 31) {
+                month_ += day_ / 31;
+                day_ = day_ % 31;
+            }
+            break;
+        default:
+            break;
+        }
+        if (month_ > 12) {
+            year_ += month_ / 12;
+            month_ = month_ % 12;
+        }
+    }
+    int get_day_() const {
+        return day_;
+    }
+    int get_month_() const {
+        return month_;
+    }
+    int get_year_() const {
+        return year_;
+    }
+    int get_hours_() const {
+        return hours_;
+    }
+    int get_mins_() const {
+        return mins_;
+    }
+    str get_day_of_week_() const {
+        return day_of_week_;
+    }
+};
 
-	int i;
-	cout << "i:";
-	cin >> i;
 
-	//проверка i
-	if (i < 0 || i > 7) {
-		cout << "error" << endl;
-	}
-	
-	//двоичный вид числа
-	cout << A << " = ";
-	bitset < 8 > b2 = A;
-	cout << b2.to_string() << endl;
+int main() {
+    Clock clock1{ 30, 4, 2020, 23, 45, "РџСЏС‚РЅРёС†Р°" };
+    Clock clock2{ clock1 };
+    Clock clock3{};
+    int n;
+    do {
+        std::cout << "=============" << std::endl;
+        std::cout << "РњРµРЅСЋ:" << std::endl; 
+        std::cout << "1. РџРѕР»СѓС‡РёС‚СЊ РґРµРЅСЊ" << std::endl;
+        std::cout << "2. РџРѕР»СѓС‡РёС‚СЊ РјРµСЃСЏС†" << std::endl; 
+        std::cout << "3. РџРѕР»СѓС‡РёС‚СЊ РіРѕРґ" << std::endl; 
+        std::cout << "4. РџРѕР»СѓС‡РёС‚СЊ С‡Р°СЃС‹" << std::endl; 
+        std::cout << "5. РџРѕР»СѓС‡РёС‚СЊ РјРёРЅСѓС‚С‹" << std::endl; 
+        std::cout << "6. РџРѕР»СѓС‡РёС‚СЊ РґРµРЅСЊ РЅРµРґРµР»Рё" << std::endl; 
+        std::cout << "7. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РґРµРЅСЊ РЅРµРґРµР»Рё" << std::endl; 
+        std::cout << "8. Р”РѕР±Р°РІРёС‚СЊ РјРёРЅСѓС‚С‹" << std::endl;
+        std::cout << "9. Р’С‹РІРµСЃС‚Рё РёРЅС„РѕСЂРјР°С†РёСЋ" << std::endl;
+    std::cout << "10. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РјРµСЃСЏС†" << std::endl; 
+    std::cout << "11. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РґРµРЅСЊ" << std::endl; 
+    std::cout << "12. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ С‡Р°СЃС‹" << std::endl; 
+    std::cout << "13. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РјРёРЅСѓС‚С‹" << std::endl;
+    std::cout << "14. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РіРѕРґ" << std::endl; 
+        std::cout << "=============" << std::endl;
+        std::cout << "Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << std::endl;
+        std::cin >> n;
+        int day_of_week;
+        int minutes;
+    int num;
+        switch (n) {
+        case 1:
+            std::cout << clock1.get_day_() << std::endl;
+            break;
 
-	// значение i-ого бита
-	int bitA = (A >> i) & 1;
-	/* 
-	A = 0b0110
-	i = 2 
-	0b0101 >> 2
-	0b0001 & 1
-	*/
-	cout << "бит" << i << " = " << bitA << endl;
-	
-	// пункт 1
+        case 2:
+            std::cout << clock1.get_month_() << std::endl;
+            break;
 
-	if (bitA != 0) {
-		A = A ^ (1 << i);
-		/*
-		A =    0b00000110
-		i = 2
-		1<<i = 0b00000100
-		A =    0b00000010
-		*/
-		bitset < 8 > b2 = A;
-		cout << "новое число: " << A << " = " << b2.to_string() << endl;
-		
-	}
-	else {
-		int x;
-		int y;
-		cout << "n1 = ";
-		cin >> x;
-		cout << "n2 = ";
-		cin >> y;
-		if (x < 0) x = -x;
-		if (y < 0) x = -y;
-		
-		int mx;
-		if (x > y) {
-			mx = x;
-		}
-		else {
-			mx = y;
-		}
-		bitset <8> b2 = mx;
-		cout << mx << " = " << b2.to_string() << mx << " = " << b2.to_string() << endl;
-	}
-	
-	// пункт 2
 
-	int N;
-	int M;
-	cout << "N M:" << endl;
-	cin >> N >> M;
-	int num = N * 10 + M;
+        case 3:
+            std::cout << clock1.get_year_() << std::endl;
+            break;
 
-	switch (num) {
-	case 11: cout << "барабанные палочки"; break;
-	case 22: cout << "гуси-лебеди"; break;
-	case 33: cout << "кудри"; break;
-	case 44: cout << "стульчики"; break;
-	case 55: cout << "перчатки"; break;
-	case 66: cout << "валенки"; break;
-	case 77: cout << "топорики"; break;
-	case 88: cout << "крендельки"; break;
-	case 99: cout << "дедушка"; break;
-	default: cout << "номер не дубль";
-	}
-	
+        case 4:
+            std::cout << clock1.get_hours_() << std::endl;
+            break;
+
+        case 5:
+            std::cout << clock1.get_mins_() << std::endl;
+            break;
+
+        case 6:
+            std::cout << clock1.get_day_of_week_() << std::endl;
+            break;
+
+        case 7:
+            std::cout << "=============" << std::endl;
+            std::cout << "1. РџРѕРЅРµРґРµР»СЊРЅРёРє" << std::endl;
+            std::cout << "2. Р’С‚РѕСЂРЅРёРє" << std::endl;
+            std::cout << "3. РЎСЂРµРґР°" << std::endl; 
+            std::cout << "4. Р§РµС‚РІРµСЂРі" << std::endl; 
+            std::cout << "5. РџСЏС‚РЅРёС†Р°" << std::endl;
+            std::cout << "6. РЎСѓР±Р±РѕС‚Р°" << std::endl;
+            std::cout << "7. Р’РѕСЃРєСЂРµСЃРµРЅСЊРµ" << std::endl;
+            std::cout << "=============" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РґРЅСЏ РЅРµРґРµР»Рё:" << std::endl;
+            std::cin >> day_of_week;
+            if ((day_of_week < 1) || (day_of_week > 7)) {
+                std::cout << "РќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ РґРЅСЏ РЅРµРґРµР»Рё" << std::endl;
+                break;
+            }
+            else {
+                clock1.set_day_of_week(day_of_week);
+            }
+            break;
+
+        case 8:
+            std::cout << "Р’РІРµРґРёС‚Рµ РјРёРЅСѓС‚С‹: " << std::endl;
+            std::cin >> minutes;
+            try {
+                clock1.add_min(minutes);
+            }
+            catch (str error) {
+                std::cerr << error << std::endl;
+            }
+            break;
+        case 9:
+            clock1.print_info();
+            break;
+    case 10:
+      std::cout << "Р’РІРµРґРёС‚Рµ РјРµСЃСЏС† (РЅРѕРјРµСЂ): " << std::endl;
+            std::cin >> num;
+            try {
+                clock1.set_month(num);
+            }
+            catch (str error) {
+                std::cerr << error << std::endl;
+            }
+            break;
+    case 11:
+      std::cout << "Р’РІРµРґРёС‚Рµ РґРµРЅСЊ: " << std::endl; 
+            std::cin >> num;
+            try {
+                clock1.set_day(num);
+            }
+            catch (str error) {
+                std::cerr << error << std::endl;
+            }
+            break;
+    case 12:
+      std::cout << "Р’РІРµРґРёС‚Рµ С‡Р°СЃС‹: " << std::endl;
+            std::cin >> num;
+            try {
+                clock1.set_hours(num);
+            }
+            catch (str error) {
+                std::cerr << error << std::endl;
+            }
+            break;
+    case 13:
+      std::cout << "Р’РІРµРґРёС‚Рµ РјРёРЅСѓС‚С‹: " << std::endl; 
+            std::cin >> num;
+            try {
+                clock1.set_minutes(num);
+            }
+            catch (str error) {
+                std::cerr << error << std::endl;
+            }
+            break;
+    case 14:
+      std::cout << "Р’РІРµРґРёС‚Рµ РіРѕРґ: " << std::endl;
+            std::cin >> num;
+      clock1.set_year(num);
+      break;
+        default:
+            std::cout << "РќРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ" << std::endl;
+            break;
+        }
+    } while (n != 0);
+    return 0;
 }
