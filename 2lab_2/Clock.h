@@ -1,5 +1,4 @@
-#ifndef CLOCK_H
-#define CLOCK_H
+#pragma once
 
 #include <iostream>
 #include <vector>
