@@ -52,4 +52,4 @@ public:
     int get_mins() const;
     string get_day_of_week() const;
     vector<string> get_tasks() const;
-};
+}; 
