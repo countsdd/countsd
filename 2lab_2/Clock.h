@@ -53,5 +53,3 @@ public:
     string get_day_of_week() const;
     vector<string> get_tasks() const;
 };
-
-#endif
