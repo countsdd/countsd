@@ -1,0 +1,3 @@
+D:/OP/C++/labaratory/strings/build/CMakeFiles/strings.dir
+D:/OP/C++/labaratory/strings/build/CMakeFiles/ALL_BUILD.dir
+D:/OP/C++/labaratory/strings/build/CMakeFiles/ZERO_CHECK.dir
