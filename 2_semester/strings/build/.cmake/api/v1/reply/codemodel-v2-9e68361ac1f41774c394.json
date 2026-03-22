@@ -44,14 +44,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Debug-96529c537eb23997bc78.json",
+					"jsonFile" : "target-ALL_BUILD-Debug-b8247d254de62648dcac.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-Debug-31064e8ad8efe8623c4a.json",
+					"jsonFile" : "target-ZERO_CHECK-Debug-9df6d3f5b8efc6ca952d.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
@@ -107,14 +107,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Release-96529c537eb23997bc78.json",
+					"jsonFile" : "target-ALL_BUILD-Release-b8247d254de62648dcac.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-Release-31064e8ad8efe8623c4a.json",
+					"jsonFile" : "target-ZERO_CHECK-Release-9df6d3f5b8efc6ca952d.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
@@ -170,14 +170,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-96529c537eb23997bc78.json",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-b8247d254de62648dcac.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-31064e8ad8efe8623c4a.json",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-9df6d3f5b8efc6ca952d.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
@@ -233,14 +233,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-96529c537eb23997bc78.json",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-b8247d254de62648dcac.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-31064e8ad8efe8623c4a.json",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-9df6d3f5b8efc6ca952d.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
@@ -257,8 +257,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/OP/C++/labaratory/strings/build",
-		"source" : "D:/OP/C++/labaratory/strings"
+		"build" : "D:/OP/countsd/2_semester/strings/build",
+		"source" : "D:/OP/countsd/2_semester/strings"
 	},
 	"version" : 
 	{

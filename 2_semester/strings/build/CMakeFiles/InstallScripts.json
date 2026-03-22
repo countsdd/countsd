@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"D:/OP/C++/labaratory/strings/build/cmake_install.cmake"
+		"D:/OP/countsd/2_semester/strings/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

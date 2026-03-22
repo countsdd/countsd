@@ -39,7 +39,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/OP/C++/labaratory/strings/build"
+			"value" : "d:/OP/countsd/2_semester/strings/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -443,7 +443,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OP/C++/labaratory/strings/build/CMakeFiles/pkgRedirects"
+			"value" : "D:/OP/countsd/2_semester/strings/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -503,7 +503,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/OP/C++/labaratory/strings"
+			"value" : "D:/OP/countsd/2_semester/strings"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1075,7 +1075,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OP/C++/labaratory/strings/build"
+			"value" : "D:/OP/countsd/2_semester/strings/build"
 		},
 		{
 			"name" : "strings_IS_TOP_LEVEL",
@@ -1099,7 +1099,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OP/C++/labaratory/strings"
+			"value" : "D:/OP/countsd/2_semester/strings"
 		}
 	],
 	"kind" : "cache",
