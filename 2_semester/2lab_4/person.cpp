@@ -1,6 +1,5 @@
 #include "person.h"
 
-// Конструктор заполнения
 Person::Person(QString s, QString n, QString p, QString ph, QString g, bool rus, bool eng, bool fr)
 {
     surname = s;
@@ -13,18 +12,12 @@ Person::Person(QString s, QString n, QString p, QString ph, QString g, bool rus,
     french = fr;
 }
 
-// Деструктор
-Person::~Person()
-{
-    // Деструктор пустой, так как нет динамической памяти
-}
+Person::~Person(){}
 
-// Метод записи в файл
 void Person::saveToFile()
 {
     QFile file("result.txt");
 
-    // Открываем файл для добавления (Append) или создаем новый
     if (file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
         QTextStream out(&file);

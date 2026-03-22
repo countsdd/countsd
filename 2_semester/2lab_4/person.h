@@ -8,27 +8,24 @@
 class Person
 {
 private:
-    // Приватные поля класса (скрыты от внешнего доступа)
-    QString surname;      // фамилия
-    QString name;         // имя
-    QString patronymic;   // отчество
-    QString phone;        // телефон
-    QString gender;       // пол
-    bool russian;         // русский язык
-    bool english;         // английский язык
-    bool french;          // французский язык
+
+    QString surname;
+    QString name;
+    QString patronymic;
+    QString phone;
+    QString gender;
+    bool russian;
+    bool english;
+    bool french;
 
 public:
-    // Конструктор для заполнения всех полей
+
     Person(QString s, QString n, QString p, QString ph, QString g, bool rus, bool eng, bool fr);
 
-    // Деструктор
     ~Person();
 
-    // Метод записи в файл
     void saveToFile();
 
-    // Геттеры (методы для получения значений)
     QString getSurname() const { return surname; }
     QString getName() const { return name; }
     QString getPatronymic() const { return patronymic; }
