@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     QRegularExpression surnameRegex("^[А-ЯA-Z][а-яa-z]*$");
     ui->lineEdit_surname->setValidator(new QRegularExpressionValidator(surnameRegex, this));
 
-    QRegularExpression nameRegex("^[А-Я][а-я]*$");
+    QRegularExpression nameRegex("^[А-ЯA-Z][а-яa-z]*$");
     ui->lineEdit_name->setValidator(new QRegularExpressionValidator(nameRegex, this));
 
-    QRegularExpression patronymicRegex("^[А-Я][а-я]*$|^$");
+    QRegularExpression patronymicRegex("^[А-ЯA-Z][а-яa-z]*$|^$");
     ui->lineEdit_patronymic->setValidator(new QRegularExpressionValidator(patronymicRegex, this));
 
     QRegularExpression phoneRegex("^\\+[0-9]{10}$");
@@ -34,14 +34,14 @@ bool MainWindow::checkSurname(const QString& text)
 
 bool MainWindow::checkName(const QString& text)
 {
-    QRegularExpression regex("^[А-Я][а-я]+$");
+    QRegularExpression regex("^[А-ЯA-Z][а-яa-z]+$");
     return regex.match(text).hasMatch();
 }
 
 bool MainWindow::checkPatronymic(const QString& text)
 {
     if (text.isEmpty()) return true;
-    QRegularExpression regex("^[А-Я][а-я]+$");
+    QRegularExpression regex("^[А-ЯA-Z][а-яa-z]+$");
     return regex.match(text).hasMatch();
 }
 
@@ -124,7 +124,7 @@ void MainWindow::on_pushButton_save_clicked()
     if (!checkName(name))
     {
         QMessageBox::warning(this, "Ошибка в поле 'Имя'",
-                             "Имя должно содержать только русские буквы и начинаться с заглавной!\n"
+                             "Имя должно содержать только буквы и начинаться с заглавной!\n"
                              "Пример: Иван");
         ui->lineEdit_name->setFocus();
         ui->lineEdit_name->selectAll();
@@ -134,7 +134,7 @@ void MainWindow::on_pushButton_save_clicked()
     if (!checkPatronymic(patronymic))
     {
         QMessageBox::warning(this, "Ошибка в поле 'Отчество'",
-                             "Отчество должно начинаться с заглавной буквы и содержать только русские буквы!\n"
+                             "Отчество должно начинаться с заглавной буквы и содержать только буквы!\n"
                              "Пример: Иванович\n"
                              "Или оставьте поле пустым");
         ui->lineEdit_patronymic->setFocus();
