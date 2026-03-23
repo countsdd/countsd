@@ -58,14 +58,19 @@ void MainWindow::clearForm()
     ui->lineEdit_patronymic->clear();
     ui->lineEdit_phone->clear();
 
+    ui->radioButton_male->setAutoExclusive(false);
+    ui->radioButton_female->setAutoExclusive(false);
+
     ui->radioButton_male->setChecked(false);
     ui->radioButton_female->setChecked(false);
+
+    ui->radioButton_male->setAutoExclusive(true);
+    ui->radioButton_female->setAutoExclusive(true);
 
     ui->checkBox_russian->setChecked(false);
     ui->checkBox_english->setChecked(false);
     ui->checkBox_french->setChecked(false);
 }
-
 void MainWindow::on_pushButton_save_clicked()
 {
     QString surname = ui->lineEdit_surname->text();
